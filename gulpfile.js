@@ -29,8 +29,8 @@ gulp.task('clean', (cb) => {
 
 // Styles
 gulp.task('styles', () => gulp.src('./src/styles/**/*.scss')
-        .pipe($.sass().on('error', $.sass.logError))
-        .pipe(gulp.dest('./dist/css')));
+    .pipe($.sass().on('error', $.sass.logError))
+    .pipe(gulp.dest('./dist/css')));
 
 // Images (For big images that get turned into base64)
 gulp.task('images', (cb) => {
@@ -58,7 +58,8 @@ gulp.task('images', (cb) => {
     addImage('sign-stellarguard', 'png');
     addImage('sign-unknown', 'png');
     addImage('icon-copy', 'png');
-
+    addImage('sort-arrow', 'png');
+    addImage('sort-arrow-act', 'png');
 
     file += '};\nmodule.exports = images;';
     fs.writeFile('./src/images.js', file, cb);
@@ -153,7 +154,7 @@ const bundler = watchify(browserify({
     },
 }));
 const rebundle = () => bundler.bundle()
-// log errors if they happen
+    // log errors if they happen
     .on('error', (e) => {
         console.log(e.stack);
     })
